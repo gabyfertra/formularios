@@ -1,0 +1,16 @@
+<form name="formulario" method="post" action="/servidor.js">
+
+
+  <!-- Nombre de usuario. Obligatorio, entre 5-40 carácteres -->
+   Usuario:
+   <input type="text" name="nombre" placeholder="Por ejemplo, Juan"
+          minlength="5" maxlength="40" required />
+   
+  <!-- Contraseña. Obligatorio, mínimo 11 carácteres -->
+   Password:
+   <input type="password" name="pass" placeholder="Contraseña"
+          minlength="11" required />
+          <input type="submit" value="Login" />
+</form>
+
+

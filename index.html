@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Formulario con Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Personaliza el fondo y los colores del formulario */
+        body {
+            background-color: beige;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #333;
+        }
+        /* Personaliza los estilos del botón */
+        .btn-primary {
+            background-color: #264d08;
+            border-color: #68b12f;
+        }
+        .btn-primary:hover {
+            background-color: #50911e;
+            border-color: #50911e;
+        }
+        /* Personaliza el color del texto de error */
+        .text-danger {
+            color: #d45252;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Contáctanos</h2>
+        <form class="contact-form" id="contact-form" action="https://hooks.zapier.com/hooks/catch/16984938/3z5lnen/" method="post">
+            <div class="form-group">
+                <label for="name">Nombre<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name" name="name" required placeholder="Matias Salom">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico<span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="esematias@ejemplo.com">
+                <small class="form-text text-muted">Formato adecuado "nombre@algo.com"</small>
+            </div>
+            <div class="form-group">
+                <label for="website">Página web</label>
+                <input type="url" class="form-control" id="website" name="website" placeholder="http://qpasafp.com">
+                <small class="form-text text-muted">Formato adecuado "https://direccion.com"</small>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de inmediato
+
+            // Realiza la solicitud a Zapier
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Muestra una alerta de éxito
+                    alert("Formulario enviado con éxito");
+                    
+                    // Borra los datos del formulario y permite que los mensajes sigan llegando a Zapier
+                    this.reset();
+                } else {
+                    alert("Error al enviar el formulario");
+                }
+            })
+            .catch(error => {
+                console.error("Error al enviar datos", error);
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

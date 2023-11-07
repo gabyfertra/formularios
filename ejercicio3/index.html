@@ -1,0 +1,11 @@
+<form action="accion.php" method="post">
+	<fieldset>
+		<legend>EDITOR</legend>
+			<label for="email">Email *</label> <input type="text" name="email" id="email" pattern="^[\w._%-]+@[\w.-]+\.[a-zA-Z]{2,4}$"  placeholder="Introduce un email" required />
+			<label for="alias">Alias *</label>				<input type="text" name="alias" id="alias" readonly required /> <input type="button" id="edit-button" value="editar" />
+			<label for="archivo">Archivo (PDF) *</label> <span class="upload"> <input type="file" name="archivo" id="archivo" accept=".pdf" required /> </span>
+			<label for="imagen">Imagen del manual *</label> <span class="upload"> <input type="file" name="imagen" id="imagen" accept="image/*" required /> </span>
+	</fieldset>
+		<input type="submit" value="Crear" name="boton" />
+
+</form>
